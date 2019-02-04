@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Fast Eat</string>
+    <string name="email_hint">insert email</string>
+    <string name="title">Fast Eat</string>
+    <string name="password_hint">insert password</string>
+    <string name="password1_hint">confirm password</string>
+    <string name="login">Login</string>
+    <string name="registrati">Registrati</string>
+    <string name="accesso_eseguito">Accesso eseguito</string>
+    <string name="email_valida"> Email valida</string>
+    <string name="email_novalida">Email non valida</string>
+    <string name="password_invalida">Password invalida</string>
+    <string name="invia">Invia Email</string>
+    <string name="telefono">Inserire numero telefono</string>
+    <string name="benveuto">Benvenuto Utente</string>
+    <string name="checkout_menu">Checkout</string>
+    <string name="minimo_or">Il minimo per ordinare è </string>
 </resources>

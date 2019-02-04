@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="19dp"
+    android:id="@+id/window"
+    android:background="@color/colorSfondo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:hint="@string/title"
+        android:textColorHint="@android:color/holo_green_dark"
+        android:textStyle="italic"
+        android:textSize="@android:dimen/app_icon_size"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/email_hint"
+        android:id="@+id/email_Et"
+        android:inputType="textEmailAddress"
+        android:background="@android:drawable/editbox_background_normal"/> <!-- andare su strings.xml-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:id="@+id/password_Et"
+        android:background="@android:drawable/editbox_background_normal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:id="@+id/login_btn"
+            android:layout_margin="@android:dimen/app_icon_size"
+            android:background="@android:drawable/button_onoff_indicator_on"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/registrati"
+            android:id="@+id/register_btn"
+            android:layout_margin="@android:dimen/app_icon_size"
+            android:background="@android:drawable/button_onoff_indicator_on"
+            />
+    </LinearLayout>
+   <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/a_switch"
+            android:drawableBottom="@android:"/>
+    </LinearLayout>
+   -->
+
+</LinearLayout>

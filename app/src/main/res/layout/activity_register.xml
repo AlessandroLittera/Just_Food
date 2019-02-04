@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/window"
+    android:background="@color/colorSfondo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:hint="@string/title"
+        android:textColorHint="@android:color/holo_green_dark"
+        android:textStyle="italic"
+        android:textSize="@android:dimen/app_icon_size"
+        />
+
+
+    <EditText
+        android:id="@+id/email_Et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_hint"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:id="@+id/password_Et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password_hint"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/password_Et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password1_hint"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:layout_marginLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/numero_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:hint="@string/telefono"
+        android:inputType="phone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/register_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/registrati"
+            android:enabled="false"
+            android:background="@android:drawable/button_onoff_indicator_on"/>
+    </LinearLayout>
+
+
+</LinearLayout>
