@@ -10,9 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.fasteat.R;
-import com.example.fasteat.Utils;
 import com.example.fasteat.datamodels.Restaurant;
-import com.example.fasteat.ui.activities.adapters.RestaurantAdapter;
+import com.example.fasteat.ui.adapters.RestaurantAdapter;
 
 import java.util.ArrayList;
 
@@ -33,13 +32,20 @@ public class MainActivity extends AppCompatActivity {
 
         restaurantRV.setLayoutManager(layoutManager);
         restaurantRV.setAdapter(adapter);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url= "";
+        StringRequest stringRequest= new StringRequest{
+
+        }
     }
 
     private ArrayList<Restaurant> getData(){
         arrayList = new ArrayList<>();
-        arrayList.add(new Restaurant("Mc Donald's", "via Tiburtina 235", 8.00f));
-        arrayList.add(new Restaurant("Burgher King","Via Tibutina 245", 6.00f));
-        arrayList.add(new Restaurant("KFC","Via Cesenatico 101",10.00f));
+        arrayList.add(new Restaurant("Mc Donald's", "Via Tiburtina, 235", 8.00f,R.drawable.mcdonal));
+        arrayList.add(new Restaurant("Burgher King","Via Tibutina, 245", 6.00f,R.drawable.king));
+        arrayList.add(new Restaurant("KFC","Via Cesenatico, 101",10.00f,R.drawable.kf_c));
+        arrayList.add(new Restaurant("Sushi San","Via Eugenio Checchi, 81",15.00f,R.drawable.sushi_sun));
 
         return arrayList;
     }
@@ -54,15 +60,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId()==R.id.login_menu){
+
+        if(item.getItemId()==R.id.modify_window){
+            setLayoutManager();
+            return true;
+        }else if(item.getItemId()==R.id.login_menu){
             startActivity(new Intent(this, LoginActivity.class));
             return true;
         }else if(item.getItemId()==R.id.checkout_menu){
             startActivity(new Intent(this, CheckoutActivity.class));
             return true;
+        }else if(item.getItemId()==R.id.register_menu){
+            startActivity(new Intent(this, RegisterActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void setLayoutManager() {
+        layoutManager=new LinearLayoutManager(this);
+        adapter.setGriglia(!adapter.getGriglia());
+        restaurantRV.setLayoutManager(layoutManager);
+        restaurantRV.setAdapter(adapter);
+
+    }
 }

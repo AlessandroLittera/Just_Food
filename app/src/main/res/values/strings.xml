@@ -14,5 +14,9 @@
     <string name="telefono">Inserire numero telefono</string>
     <string name="benveuto">Benvenuto Utente</string>
     <string name="checkout_menu">Checkout</string>
-    <string name="minimo_or">Il minimo per ordinare è </string>
+    <string name="minimo_or">Ordine minimo: </string>
+    <string name="euro">€</string>
+    <string name="pay">PAY</string>
+    <string name="total">Totale</string>
+
 </resources>
