@@ -23,6 +23,15 @@ public class MenuAdapter extends RecyclerView.Adapter {
     Context context;
 
 
+    public void setData(ArrayList<Cibo> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Cibo> getData() {
+        return data;
+    }
+
     public MenuAdapter(Context context, ArrayList<Cibo> data) {
         inflater = LayoutInflater.from(context);
         this.context = context;
@@ -75,6 +84,7 @@ public class MenuAdapter extends RecyclerView.Adapter {
         public ProgressBar progressBar;
         public Restaurant restaurant;
 
+
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             nameBurger = itemView.findViewById(R.id.name_br);
@@ -94,6 +104,8 @@ public class MenuAdapter extends RecyclerView.Adapter {
 
 
         }
+
+
 
 
         @Override
@@ -122,7 +134,7 @@ public class MenuAdapter extends RecyclerView.Adapter {
 
 
     private Restaurant getRestaurant() {
-        return new Restaurant("Panino", "via san giuseppe", 1.00f, R.drawable.mcdonal);
+        return new Restaurant("Panino", "via san giuseppe", 1.00f, "https://rovato5stelle.files.wordpress.com/2013/11/mcdonald.jpg");
     }
 }
 

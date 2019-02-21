@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fasteat.R;
 import com.example.fasteat.datamodels.Restaurant;
 import com.example.fasteat.ui.activities.ShopActivity;
@@ -32,9 +33,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         this.griglia = griglia;
     }
 
+    public void setData(ArrayList<Restaurant> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
 
+    public ArrayList<Restaurant> getData() {
+        return data;
+    }
 
-        public RestaurantAdapter(Context context, ArrayList<Restaurant> data){
+    public RestaurantAdapter(Context context, ArrayList<Restaurant> data){
                 inflater= LayoutInflater.from(context);
                 this.data=data;
                 this.context=context;
@@ -63,7 +71,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             vh.restaurantName.setText(data.get(i).getNome());
             vh.resturantAddress.setText(data.get(i).getIndirizzo());
             vh.resturantPrice.append(String.valueOf(data.get(i).getPrezzo()));
-            vh.resturantImage.setImageResource(data.get(i).getLogo());
+            Glide.with(context).load(data.get(i).getUrl()).into(vh.resturantImage);
 
             }
 
@@ -86,10 +94,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             resturantImage=itemView.findViewById(R.id.logo_tv);
 
 
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, ShopActivity.class));
+                    Intent i = new Intent(context, ShopActivity.class);
+                    i.putExtra("idRestaurant",data.get(getAdapterPosition()).getId());
+                    i.putExtra("id_url",data.get(getAdapterPosition()).getUrl());
+                    i.putExtra("nomeRestaurant",data.get(getAdapterPosition()).getNome());
+                    i.putExtra("addressRestaurant",data.get(getAdapterPosition()).getIndirizzo());
+                    context.startActivity(i);
                 }
             });
 

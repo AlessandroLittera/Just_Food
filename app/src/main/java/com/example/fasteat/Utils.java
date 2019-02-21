@@ -5,6 +5,9 @@ import android.widget.Toast;
 
 public class Utils {
 
+    public static final String LOGIN_ACTION= "LOGIN_ACTION";
+    public static final String LOGOUT_ACTION = "LOGOUT_ACTION";
+
 
     public static void printToast(Context contesto, int contenuto)
     {

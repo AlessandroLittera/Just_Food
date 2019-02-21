@@ -1,6 +1,8 @@
 package com.example.fasteat.datamodels;
 
-import android.support.annotation.DrawableRes;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -8,14 +10,39 @@ public class Restaurant {
     String nome;
     String indirizzo;
     float prezzo;
-    private @DrawableRes int logo;
+    private String url;
+    String id;
 
     private ArrayList<Cibo> product;
-    public Restaurant(String nome, String indirizzo, float prezzo, int logo){
+    public Restaurant(String nome, String indirizzo, float prezzo, String url){
         this.nome=nome;
         this.indirizzo=indirizzo;
         this.prezzo=prezzo;
-        this.logo=logo;
+        this.url=url;
+        id="0";
+    }
+
+    public Restaurant(JSONObject jsonObject) {
+        try {
+            this.nome= jsonObject.getString("name");
+            this.indirizzo= jsonObject.getString("address");
+            this.prezzo= (float)jsonObject.getDouble("min_order");
+            this.url= jsonObject.getString("image_url");
+            id=jsonObject.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ArrayList<Cibo> getProduct() {
@@ -34,8 +61,8 @@ public class Restaurant {
         return prezzo;
     }
 
-    public @DrawableRes int getLogo() {
-        return logo;
+    public String getUrl() {
+        return url;
     }
 
     public void setNome(String nome) {
@@ -54,7 +81,7 @@ public class Restaurant {
         this.product = product;
     }
 
-    public void setLogo(@DrawableRes int logo) {
-        this.logo = logo;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

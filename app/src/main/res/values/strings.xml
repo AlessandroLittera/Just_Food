@@ -18,5 +18,6 @@
     <string name="euro">€</string>
     <string name="pay">PAY</string>
     <string name="total">Totale</string>
+    <string name="profile">profilo</string>
 
 </resources>

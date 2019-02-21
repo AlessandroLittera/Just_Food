@@ -1,5 +1,6 @@
 package com.example.fasteat.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.fasteat.R;
 import com.example.fasteat.Utils;
+import com.example.fasteat.services.RestController;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener, Response.Listener<String>, Response.ErrorListener {
 
     Button registerBtn;
 
@@ -122,14 +126,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String password= passwordEt.getText().toString();
         String password1=passwordEt1.getText().toString();
         String number=numberTelefono.getText().toString();
-
-
+        RestController restController= new RestController(this);
+        String endpoint= "auth/local/register";
         if(Utils.verifyEmail(email)){
             if(Utils.verifyPassword(password)){
                 if(Utils.confirmPassword(password, password1)){
                     if(Utils.verifyNumber(number)){
                         registerBtn.setEnabled(true);
+                        restController.postRegisterRequest(endpoint,this,this,email, password, number);
                         Utils.printToast(this, R.string.benveuto);
+                        Intent i = new Intent(this, MainActivity.class);
+                        startActivity(i);
                     }else{
                         registerBtn.setEnabled(false);
                         numberTelefono.setError("Inserire un numero corretto");
@@ -151,12 +158,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
 
-
-
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.register_btn1){
             doRegister();
         }
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(this, "Errore Registrazione", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onResponse(String response) {
+        Log.i("tag","ok");
+        Toast.makeText(this, "Benvenuto",Toast.LENGTH_LONG).show();
     }
 }

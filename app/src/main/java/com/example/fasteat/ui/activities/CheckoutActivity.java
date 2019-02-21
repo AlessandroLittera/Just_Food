@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fasteat.R;
 import com.example.fasteat.datamodels.Cibo;
 import com.example.fasteat.datamodels.Ordine;
@@ -53,7 +54,7 @@ public class CheckoutActivity extends AppCompatActivity implements CheckoutAdapt
 
         restaurantTV.setText(restaurant.getNome());
         restaurantAddress.setText(restaurant.getIndirizzo());
-        logo.setImageResource(restaurant.getLogo());
+        Glide.with(this).load(restaurant.getUrl()).into(logo);
         minOrder.setText(String.valueOf(restaurant.getPrezzo()));
         totale.setText(String.valueOf(ordine.calcoloTotale()));
     }
@@ -69,15 +70,15 @@ public class CheckoutActivity extends AppCompatActivity implements CheckoutAdapt
 
     private ArrayList<Cibo> getOrdine(){
         ArrayList arrayList = new ArrayList<>();
-        arrayList.add(new Cibo("Cheesburger", 1.0f));
-        arrayList.add(new Cibo("Hamburger", 1.00f));
-        arrayList.add(new Cibo("Cheesburger",1.00f));
-        arrayList.add(new Cibo("McMenu",1.00f));
+        arrayList.add(new Cibo("Cheesburger", 1.0f,0,"ciao"));
+        arrayList.add(new Cibo("Hamburger", 1.00f,0,"ciao"));
+        arrayList.add(new Cibo("Cheesburger",1.00f,0,"ciao"));
+        arrayList.add(new Cibo("McMenu",1.00f,0,"ciao"));
         return arrayList;
     }
 
     private Restaurant getRestaurant() {
-        return new Restaurant("Panino", "via san giuseppe", 1.00f, R.drawable.mcdonal);
+        return new Restaurant("Panino", "via san giuseppe", 1.00f,"https://rovato5stelle.files.wordpress.com/2013/11/mcdonald.jpg");
     }
 
     @Override
